@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('venue');
             $table->date('date');
-            $table->DateTime('start_time');
+            $table->time('start_time');
             $table->string('description');
             $table->string('booking_url')->nullable();
             $table->json('tags');

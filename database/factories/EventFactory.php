@@ -23,8 +23,8 @@ class EventFactory extends Factory
         return [
             'title' => fake()->title(),
             'venue' => fake()->streetName(),
-            'date' => fake()->date(),
-            'start_time' => fake()->dateTime(),
+            'date' => Carbon::parse(fake()->dateTimeThisYear)->format('Y-m-d'),
+            'start_time' => Carbon::parse(fake()->time())->format('H:i:s'),
             'description' => fake()->text(),
             'booking_url' => fake()->url(),
             'tags' => json_encode(fake()->words(3)),

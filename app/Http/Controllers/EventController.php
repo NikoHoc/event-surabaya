@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Event;
 use Illuminate\Http\Request;
 
 class EventController extends Controller
@@ -11,12 +12,16 @@ class EventController extends Controller
      */
     public function index()
     {
-        return view('events/index');
+        $eventData = Event::query()->get();
+        return view('events/index', [
+            'events' => $eventData
+        ]);
     }
+
 
     public function indexMaster()
     {
-        return view('master.event.index'); // Correct folder convention
+        return view('master/event/index'); 
     }
 
     /**
@@ -38,9 +43,14 @@ class EventController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
-        //
+        //$event = Event::findOrFail($id);
+        // $event = Event::query()->where('id', $id)->firstOrFail();
+        // return view('events/event_detail/index', compact('event'));
+
+        $event = Event::with('categoryEvent', 'organizer')->find($id);
+        return view('events/event_detail/index', compact('event'));
     }
 
     /**

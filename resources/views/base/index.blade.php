@@ -12,7 +12,7 @@
 </head>
 <body>
     <!-- Navbar -->
-    <div class="navbar bg-base-100">
+    <div class="navbar bg-base-100 shadow-2xl">
         <div class="navbar-start">
           <div class="dropdown">
             <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
@@ -44,7 +44,7 @@
               <li><a href="/events">Events</a></li>
             </ul>
           </div>
-          <a class="btn btn-ghost text-xl">Surabaya</a>
+          <a class="btn btn-ghost text-xl">Surabaya Events</a>
         </div>
         <div class="navbar-center hidden lg:flex">
           <ul class="menu menu-horizontal px-1">

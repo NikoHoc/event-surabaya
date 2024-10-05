@@ -10,7 +10,12 @@ class Event extends Model
 {
     use HasFactory;
 
-    public function categoryEvents(): BelongsTo {
+    protected $casts = [
+        'date' => 'date', 
+        'start_time' => 'datetime:H:i:s', 
+    ];
+
+    public function categoryEvent(): BelongsTo {
         return $this->belongsTo(EventCategory::class);
     }
 
