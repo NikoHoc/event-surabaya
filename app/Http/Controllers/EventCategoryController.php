@@ -11,7 +11,7 @@ class EventCategoryController extends Controller
      */
     public function index()
     {
-        //
+        return view('master/event_category/index');
     }
 
     /**

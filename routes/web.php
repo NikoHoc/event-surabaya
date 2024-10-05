@@ -1,5 +1,10 @@
 <?php
 
+use App\Http\Controllers\EventCategoryController;
+use App\Http\Controllers\EventController;
+use App\Http\Controllers\OrganizerController;
+use App\Models\EventCategory;
+use App\Models\Organizer;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,3 +25,9 @@ Route::get('/', function () {
 Route::get('/base', function() {
     return view('base.index');
 });
+
+Route::resource('events', EventController::class);
+
+Route::get('master/event', [EventController::class, 'indexMaster'])->name('master.event.index');
+Route::resource('master/event_category', EventCategoryController::class);
+Route::resource('master/organizer', OrganizerController::class);

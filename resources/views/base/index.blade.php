@@ -36,12 +36,12 @@
               <li>
                 <a>Master Data</a>
                 <ul class="p-2">
-                  <li><a>Master Event Category</a></li>
-                  <li><a>Master Organizer</a></li>
-                  <li><a>Master Event</a></li>
+                  <li><a href="/master/event_category">Master Event Category</a></li>
+                  <li><a href="/master/organizer">Master Organizer</a></li>
+                  <li><a href="/master/event">Master Event</a></li>
                 </ul>
               </li>
-              <li><a>Events</a></li>
+              <li><a href="/events">Events</a></li>
             </ul>
           </div>
           <a class="btn btn-ghost text-xl">Surabaya</a>
@@ -52,13 +52,13 @@
               <details>
                 <summary>Master Data</summary>
                 <ul class="p-2">
-                    <li><a>Master Event Category</a></li>
-                    <li><a>Master Organizer</a></li>
-                    <li><a>Master Event</a></li>
+                  <li><a href="/master/event_category">Master Event Category</a></li>
+                  <li><a href="/master/organizer">Master Organizer</a></li>
+                  <li><a href="/master/event">Master Event</a></li>
                 </ul>
               </details>
             </li>
-            <li><a>Events</a></li>
+            <li><a href="/events">Events</a></li>
           </ul>
         </div>
         <div class="navbar-end">

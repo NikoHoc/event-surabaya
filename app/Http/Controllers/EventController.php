@@ -11,7 +11,12 @@ class EventController extends Controller
      */
     public function index()
     {
-        //
+        return view('events/index');
+    }
+
+    public function indexMaster()
+    {
+        return view('master.event.index'); // Correct folder convention
     }
 
     /**
