@@ -10,7 +10,7 @@
 <div class="container mx-auto px-4 mt-5">
     <div class="grid grid-cols-2 gap-5 mt-5">
         <div>
-            <h1 class="font-semibold">{{ $event->categoryEvents ? $event->categoryEvents->name : 'No Category' }}</h1>
+            <h1 class="font-semibold">{{ $event->categoryEvent->name }}</h1>
             <h1 class="font-black text-3xl">{{ $event->title }}</h1>
         </div>
         <div class="flex justify-end">

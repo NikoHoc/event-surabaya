@@ -16,10 +16,10 @@ class Event extends Model
     ];
 
     public function categoryEvent(): BelongsTo {
-        return $this->belongsTo(EventCategory::class);
+        return $this->belongsTo(EventCategory::class, 'event_category_id');
     }
 
     public function organizer(): BelongsTo {
-        return $this->belongsTo(Organizer::class);
+        return $this->belongsTo(Organizer::class, 'organizer_id');
     }
 }

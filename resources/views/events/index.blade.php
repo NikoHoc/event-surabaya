@@ -7,13 +7,13 @@
 
 @section('content')
 <div class="container mx-auto px-4 mt-5">
-    <h1>Events in Surabaya</h1>
+    <h1 class="text-xl font-bold">Events in Surabaya</h1>
 </div>
 <div class="container mx-auto px-4 mt-4">
     <div class="grid grid-cols-3 gap-4">
         @foreach ($events as $event)
         <div class="card bg-base-100 shadow-xl border-4 border-info mb-4">
-            <img src="{{ asset('assets/default-image.jpg') }}" alt="Event Image" class="rounded-t-xl" />
+            <img src="{{ asset('assets/default-image.jpg') }}" alt="Event Image" class="rounded-t-xl h-60" />
             
             <div class="card-body">
                 <h2 class="card-title">{{ $event->title }}</h2>

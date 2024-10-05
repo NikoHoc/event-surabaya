@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @vite('resources/css/app.css')
     
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.css" />
     @yield('library-css')
 
     <title>Document</title>
@@ -52,13 +53,13 @@
               <details>
                 <summary>Master Data</summary>
                 <ul class="p-2">
-                  <li><a href="/master/event_category">Master Event Category</a></li>
-                  <li><a href="/master/organizer">Master Organizer</a></li>
-                  <li><a href="/master/event">Master Event</a></li>
+                  <li><a href="/master/event_category" class="{{ request()->is('master/event_category') ? 'font-bold active' : '' }}">Master Event Category</a></li>
+                  <li><a href="/master/organizer" class="{{ request()->is('master/organizer') ? 'font-bold active' : '' }}">Master Organizer</a></li>
+                  <li><a href="/master/event" class="{{ request()->is('master/event') ? 'font-bold active' : '' }}">Master Event</a></li>
                 </ul>
               </details>
             </li>
-            <li><a href="/events">Events</a></li>
+            <li><a href="/events" class="{{ request()->is('events') ? 'font-bold active' : '' }}">Events</a></li>
           </ul>
         </div>
         <div class="navbar-end">
@@ -70,7 +71,14 @@
     </div>
    
 
+    <!-- Data table -->
+    {{-- <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script> --}}
+    <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
 
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    @vite(['resources/js/app.js'])
     @yield('library-js')
 </body>
 </html>
