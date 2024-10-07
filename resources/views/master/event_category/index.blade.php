@@ -33,7 +33,7 @@
 
 <div class="container mx-auto px-4 mt-5">
     <div class="overflow-x-auto"> 
-        <table class="bg-neutral rounded-lg stripe hover"  id="categoryEvent">
+        <table class="bg-neutral rounded-lg stripe hover"  id="categoryEventTable">
             <thead>
                 <tr>
                     <th>No</th>
@@ -68,7 +68,7 @@
 @section('library-js')
 <script>
     $(document).ready(function() {
-        $('#categoryEvent').DataTable({
+        $('#categoryEventTable').DataTable({
             language: {
                 searchPlaceholder: "Cari kategori", 
             }

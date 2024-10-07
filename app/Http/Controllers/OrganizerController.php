@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Organizer;
 use Illuminate\Http\Request;
 
 class OrganizerController extends Controller
@@ -11,7 +12,8 @@ class OrganizerController extends Controller
      */
     public function index()
     {
-        return view('master/organizer/index');
+        $organizerData = Organizer::query()->get();
+        return view('master/organizer/index', compact('organizerData'));
     }
 
     /**
@@ -19,7 +21,7 @@ class OrganizerController extends Controller
      */
     public function create()
     {
-        //
+        return view('master/organizer/form/index');
     }
 
     /**
@@ -43,7 +45,10 @@ class OrganizerController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $organizerData = Organizer::findOrFail($id);
+        return view('master/organizer/form/index', 
+            compact('organizerData')
+        ); 
     }
 
     /**

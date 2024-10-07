@@ -80,6 +80,7 @@
     <!-- Sweet Alert -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     @vite(['resources/js/app.js'])
+    @vite('resources/js/tinymce.js')
     @yield('library-js')
 </body>
 </html>
