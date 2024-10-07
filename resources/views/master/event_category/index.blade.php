@@ -12,17 +12,28 @@
         <a href="{{ route('event_category.create') }}" class="btn btn-primary ml-4">+ Create</a>
     </div>
 
-    <!-- Success Message -->
+    {{-- <!-- Success Message -->
     @if(session('success'))
         <div class="alert alert-success mt-4">
             {{ session('success') }}
+        </div>
+    @endif --}}
+    @if (Session::has('message') && Session::get('alert-class') == 'success')
+        <div class="alert alert-success mt-4"
+            role="alert">
+            {{ Session::get('message') }}
+        </div>
+    @elseif(Session::has('message') && Session::get('alert-class') == 'failed')
+        <div class="alert alert-error mt-4"
+            role="alert">
+            {{ Session::get('message') }}
         </div>
     @endif
 </div>
 
 <div class="container mx-auto px-4 mt-5">
     <div class="overflow-x-auto"> 
-        <table class="bg-neutral rounded-lg stripe hover cell-border"  id="categoryEvent">
+        <table class="bg-neutral rounded-lg stripe hover"  id="categoryEvent">
             <thead>
                 <tr>
                     <th>No</th>

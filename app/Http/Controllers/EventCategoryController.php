@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\EventCategory;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session as FacadesSession;
 
 class EventCategoryController extends Controller
 {
@@ -33,11 +34,16 @@ class EventCategoryController extends Controller
     public function store(Request $request)
     {
         // Validate the incoming request
-        $validatedData = $request->validate([
-            'name' => 'required|string|max:255',  // Ensuring the category name is required and is a string with a max length
+        $data = $request->validate([
+            'name' => 'required|string|max:255',  
         ]);
 
-        // // Create a new event category using the validated data
+        if (!$data) {
+            FacadesSession::flash('message', 'Category gagal ditambah !');
+            FacadesSession::flash('alert-class', 'failed');
+            return redirect()->route('event_category.index');
+        }
+
         // $eventCategory = new EventCategory();
         // $eventCategory->name = $validatedData['name'];
         // $eventCategory->save();
@@ -48,8 +54,11 @@ class EventCategoryController extends Controller
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
         ]);
 
-        // Redirect back to the index page with a success message
-        return redirect()->route('event_category.index')->with('success', 'Event category created successfully!');
+        FacadesSession::flash('message', 'Category berhasil ditambah !');
+        FacadesSession::flash('alert-class', 'success');
+
+        //return redirect()->route('event_category.index')->with('success', 'Event category created successfully!');
+        return redirect()->route('event_category.index');
     }
 
     /**
@@ -76,9 +85,15 @@ class EventCategoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $request->validate([
+        $data = $request->validate([
             'name' => 'required|string|max:255',
         ]);
+
+        if (!$data) {
+            FacadesSession::flash('message', 'Category gagal diupdate !');
+            FacadesSession::flash('alert-class', 'failed');
+            return redirect()->route('event_category.index');
+        }
 
         // $category = EventCategory::findOrFail($id);
         // $category->name = $request->input('name');
@@ -89,7 +104,11 @@ class EventCategoryController extends Controller
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
 
-        return redirect()->route('event_category.index')->with('success', 'Category updated successfully.');
+        FacadesSession::flash('message', 'Category berhasil diupdate !');
+        FacadesSession::flash('alert-class', 'success');
+
+        // return redirect()->route('event_category.index')->with('success', 'Category updated successfully.');
+        return redirect()->route('event_category.index');
     }
 
     /**
@@ -101,6 +120,11 @@ class EventCategoryController extends Controller
         // $category->delete();
 
         EventCategory::query()->where('id', $id)->delete();
-        return redirect()->route('event_category.index')->with('success', 'Category deleted successfully.');
+
+        FacadesSession::flash('message', 'Category berhasil dihapus !');
+        FacadesSession::flash('alert-class', 'success');
+
+        // return redirect()->route('event_category.index')->with('success', 'Category deleted successfully.');
+        return redirect()->route('event_category.index');
     }
 }
