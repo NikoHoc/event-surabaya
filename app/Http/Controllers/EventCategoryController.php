@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\EventCategory;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class EventCategoryController extends Controller
@@ -23,7 +24,7 @@ class EventCategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('master/event_category/form/index');
     }
 
     /**
@@ -31,7 +32,24 @@ class EventCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validate the incoming request
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',  // Ensuring the category name is required and is a string with a max length
+        ]);
+
+        // // Create a new event category using the validated data
+        // $eventCategory = new EventCategory();
+        // $eventCategory->name = $validatedData['name'];
+        // $eventCategory->save();
+
+        EventCategory::query()->create([
+            'name' => $request->name,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
+        ]);
+
+        // Redirect back to the index page with a success message
+        return redirect()->route('event_category.index')->with('success', 'Event category created successfully!');
     }
 
     /**
@@ -39,10 +57,7 @@ class EventCategoryController extends Controller
      */
     public function show($id)
     {
-        $category = EventCategory::find($id);
-        return view('master/event_category/detail/index', [
-            "categoryData" => $category
-        ]);
+        //
     }
 
     /**
@@ -50,7 +65,10 @@ class EventCategoryController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $categoryData = EventCategory::findOrFail($id);
+        return view('master/event_category/form/index', 
+            compact('categoryData')
+        ); 
     }
 
     /**
@@ -62,9 +80,14 @@ class EventCategoryController extends Controller
             'name' => 'required|string|max:255',
         ]);
 
-        $category = EventCategory::findOrFail($id);
-        $category->name = $request->input('name');
-        $category->save();
+        // $category = EventCategory::findOrFail($id);
+        // $category->name = $request->input('name');
+        // $category->save();
+
+        EventCategory::query()->where('id', $id)->update([
+            'name' => $request->name,
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
 
         return redirect()->route('event_category.index')->with('success', 'Category updated successfully.');
     }
@@ -74,8 +97,10 @@ class EventCategoryController extends Controller
      */
     public function destroy(string $id)
     {
-        $category = EventCategory::findOrFail($id);
-        $category->delete();
+        // $category = EventCategory::findOrFail($id);
+        // $category->delete();
+
+        EventCategory::query()->where('id', $id)->delete();
         return redirect()->route('event_category.index')->with('success', 'Category deleted successfully.');
     }
 }
