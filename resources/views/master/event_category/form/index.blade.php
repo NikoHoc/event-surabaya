@@ -16,8 +16,10 @@
         <form action="{{ route('event_category.update', $categoryData->id) }}" method="POST" class="inline">
             @csrf
             @method('PUT')
-            <p class="mb-2">Category Name:</p>
-            <input type="text" name="name" value="{{ $categoryData->name }}" class="input input-bordered input-info w-full max-w-xs" />
+            <div class="mb-2">
+                <p class="mb-2">Category Name:</p>
+                <input type="text" name="name" value="{{ $categoryData->name }}" class="input input-bordered input-info w-full max-w-xs" />
+            </div>
             <div class="flex space-x-2 mt-4">
                 <button type="submit" class="btn btn-primary">Update</button>
                 <a href="{{ route('event_category.index') }}" class="btn btn-secondary">Cancel</a>
@@ -27,8 +29,10 @@
         <!-- Create Form -->
         <form action="{{ route('event_category.store') }}" method="POST" class="inline">
             @csrf
-            <p class="mb-2">Category Name:</p>
-            <input type="text" name="name" value="" class="input input-bordered input-info w-full max-w-xs" />
+            <div class="mb-2"><p class="mb-2">Category Name:</p>
+                <input type="text" name="name" value="" class="input input-bordered input-info w-full max-w-xs" />
+            </div>
+            
             <div class="flex space-x-2 mt-4">
                 <button type="submit" class="btn btn-primary">Create</button>
                 <a href="{{ route('event_category.index') }}" class="btn btn-secondary">Cancel</a>

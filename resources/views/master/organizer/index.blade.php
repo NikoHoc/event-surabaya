@@ -46,15 +46,19 @@
                 @foreach($organizerData as $organizer)
                 <tr>
                     <th>{{ $loop->iteration }}</th>
-                    <td>{{ $organizer->name }}</td>
-                    <td>{{ $organizer->about }}</td>
                     <td>
-                        <a href="{{ route('organizer.edit', $organizer->id) }}" class="btn btn-warning">edit</a>
-                        <form action="{{ route('organizer.destroy', $organizer->id) }}" method="POST" class="delete-form" style="display:inline;">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-error delete-btn">Delete</button>
-                        </form>
+                        <a href="{{ route('organizer.show', $organizer->id) }}">{{ $organizer->name }}</a>
+                    </td>
+                    <td>{{ $organizer->description }}</td>
+                    <td>
+                        <div class="inline-flex gap-2">
+                            <a href="{{ route('organizer.edit', $organizer->id) }}" class="btn btn-warning">edit</a>
+                            <form action="{{ route('organizer.destroy', $organizer->id) }}" method="POST" class="delete-form" style="display:inline;">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-error delete-btn">Delete</button>
+                            </form>
+                        </div>
                     </td>
                 </tr>
                 @endforeach
@@ -72,7 +76,7 @@
     $(document).ready(function() {
         $('#organizerTable').DataTable({
             language: {
-                searchPlaceholder: "Cari kategori", 
+                searchPlaceholder: "Cari Organizer", 
             }
         });
 

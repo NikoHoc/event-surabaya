@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('organizers', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('description');
+            $table->longText('description');
             $table->string('facebook_link');
             $table->string('x_link');
             $table->string('website_link');

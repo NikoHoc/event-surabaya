@@ -16,11 +16,32 @@
         <form action="{{ route('organizer.update', $organizerData->id) }}" method="POST" class="inline">
             @csrf
             @method('PUT')
-            <p class="mb-2">Organizer Name:</p>
-            <input type="text" name="name" value="{{ $organizerData->name }}" class="input input-bordered input-info w-full max-w-xs" />
-            <p class="mb-2">Website:</p>
-            <input type="text" name="name" value="{{ $organizerData->website }}" class="input input-bordered input-info w-full max-w-xs" />
-            <p class="mb-2">About:</p>
+            <div class="mt-2">
+                <p>Organizer Name:</p>
+                <input type="text" name="name" value="{{ $organizerData->name }}" class="input input-bordered input-info w-full max-w-xs" />
+            </div>
+
+            <div class="grid grid-cols-4 gap-4 mt-2">
+                <div>
+                    <p>Facebook:</p>
+                    <input type="text" name="facebook_link" value="{{ $organizerData->facebook_link }}" class="input input-bordered input-info w-full max-w-xs" />
+                </div>
+                <div>
+                    <p>X:</p>
+                    <input type="text" name="x_link" value="{{ $organizerData->x_link }}" class="input input-bordered input-info w-full max-w-xs" />
+                </div>
+            </div>
+
+            <div class="mb-2 mt-2">
+                <p>Website:</p>
+                <input type="text" name="website_link" value="{{ $organizerData->website_link }}" class="input input-bordered input-info w-full max-w-xs" />
+            </div>
+
+            <div class="mb-2 mt-2">
+                <p>Description:</p>
+                <textarea class="editor" name="description">{{ isset($organizerData) ? $organizerData->description : "Hello, World !" }}</textarea>
+            </div>
+
             <div class="flex space-x-2 mt-4">
                 <button type="submit" class="btn btn-primary">Update</button>
                 <a href="{{ route('organizer.index') }}" class="btn btn-secondary">Cancel</a>
@@ -30,24 +51,31 @@
         <!-- Create Form -->
         <form action="{{ route('organizer.store') }}" method="POST" class="inline">
             @csrf
-            <p class="mb-2">Organizer Name:</p>
-            <input type="text" name="name" value="" class="input input-bordered input-info w-full max-w-xs" />
+            <div class="mt-2">
+                <p>Organizer Name:</p>
+                <input type="text" name="name" value="" class="input input-bordered input-info w-full max-w-xs" />
+            </div>
 
             <div class="grid grid-cols-4 gap-4 mt-2">
                 <div>
-                    <p class="mb-2">Facebook:</p>
-                    <input type="text" name="name" value="" class="input input-bordered input-info w-full max-w-xs" />
+                    <p>Facebook:</p>
+                    <input type="text" name="facebook_link" value="" class="input input-bordered input-info w-full max-w-xs" />
                 </div>
-                <div><p class="mb-2">X:</p>
-                    <input type="text" name="name" value="" class="input input-bordered input-info w-full max-w-xs" />
+                <div>
+                    <p>X:</p>
+                    <input type="text" name="x_link" value="" class="input input-bordered input-info w-full max-w-xs" />
                 </div>
             </div>
 
-            <p class="mb-2 mt-2">Website:</p>
-            <input type="text" name="name" value="" class="input input-bordered input-info w-full max-w-xs" />
+            <div class="mb-2 mt-2">
+                <p>Website:</p>
+                <input type="text" name="website_link" value="" class="input input-bordered input-info w-full max-w-xs" />
+            </div>
 
-            <p class="mb-2 mt-2">About:</p>
-            <textarea class="editor" name="article">{{ isset($article) ? $article->article : "Hello, World !" }}</textarea>
+            <div class="mb-2 mt-2">
+                <p>Description:</p>
+                <textarea class="editor" name="description">Add Your Description</textarea>
+            </div>
 
             <div class="flex space-x-2 mt-4">
                 <button type="submit" class="btn btn-primary">Create</button>

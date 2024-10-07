@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Organizer;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session as FacadesSession;
 
 class OrganizerController extends Controller
 {
@@ -29,7 +31,34 @@ class OrganizerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $data = $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'required',
+            'facebook_link' => 'required',
+            'x_link' => 'required',
+            'website_link' => 'required',
+            
+        ]);
+
+        if (!$data) {
+            FacadesSession::flash('message', 'Organizer gagal ditambah !');
+            FacadesSession::flash('alert-class', 'failed');
+            return redirect()->route('organizer.index');
+        }
+
+        Organizer::create([
+            'name' => $request->name,
+            'description' => $request->description,
+            'facebook_link' => $request->facebook_link,
+            'x_link' => $request->x_link,
+            'website_link' => $request->website_link,
+        ]);
+
+        FacadesSession::flash('message', 'Organizer berhasil ditambah !');
+        FacadesSession::flash('alert-class', 'success');
+
+        return redirect()->route('organizer.index');
     }
 
     /**
@@ -37,7 +66,10 @@ class OrganizerController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $organizerData = Organizer::findOrFail($id);
+        return view('master/organizer/detail/index',
+            compact('organizerData')
+        );
     }
 
     /**
@@ -56,7 +88,33 @@ class OrganizerController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $data = $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'required',
+            'facebook_link' => 'required',
+            'x_link' => 'required',
+            'website_link' => 'required',
+            
+        ]);
+        if (!$data) {
+            FacadesSession::flash('message', 'Organizer gagal diupdate !');
+            FacadesSession::flash('alert-class', 'failed');
+            return redirect()->route('organizer.index');
+        }
+
+        Organizer::query()->where('id', $id)->update([
+            'name' => $request->name,
+            'description' => $request->description,
+            'facebook_link' => $request->facebook_link,
+            'x_link' => $request->x_link,
+            'website_link' => $request->website_link,
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
+        ]);
+
+        FacadesSession::flash('message', 'Organizer berhasil diupdate !');
+        FacadesSession::flash('alert-class', 'success');
+
+        return redirect()->route('organizer.index');
     }
 
     /**
@@ -64,6 +122,11 @@ class OrganizerController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Organizer::query()->where('id', $id)->delete();
+
+        FacadesSession::flash('message', 'Organizer berhasil dihapus !');
+        FacadesSession::flash('alert-class', 'success');
+
+        return redirect()->route('organizer.index');
     }
 }
