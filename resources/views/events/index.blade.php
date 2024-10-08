@@ -4,10 +4,9 @@
 <link href="https://cdn.datatables.net/v/dt/dt-2.1.8/datatables.min.css" rel="stylesheet">
 @endsection
 
-
 @section('content')
 <div class="container mx-auto px-4 mt-5">
-    <h1 class="text-xl font-bold">Events in Surabaya</h1>
+    <h1 class="text-2xl font-bold">Events in Surabaya</h1>
 </div>
 <div class="container mx-auto px-4 mt-4">
     <div class="grid grid-cols-3 gap-4">
@@ -28,15 +27,9 @@
         </div>
         @endforeach
     </div>
-    
 </div>
 
-
-
 @endsection
-
-
-
 
 @section('library-js')
 <script src="https://cdn.datatables.net/v/dt/dt-2.1.8/datatables.min.js"></script>

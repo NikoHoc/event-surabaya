@@ -46,7 +46,7 @@
                 @foreach($organizerData as $organizer)
                 <tr>
                     <th>{{ $loop->iteration }}</th>
-                    <td>
+                    <td class="whitespace-nowrap">
                         <a href="{{ route('organizer.show', $organizer->id) }}">{{ $organizer->name }}</a>
                     </td>
                     <td>{{ $organizer->description }}</td>
