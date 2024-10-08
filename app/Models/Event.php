@@ -15,6 +15,8 @@ class Event extends Model
         'start_time' => 'datetime:H:i:s', 
     ];
 
+    protected $fillable = ['organizer_id', 'event_category_id', 'title', 'venue', 'date', 'start_time', 'description', 'booking_url', 'tags'];
+
     public function categoryEvent(): BelongsTo {
         return $this->belongsTo(EventCategory::class, 'event_category_id');
     }

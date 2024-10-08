@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Event;
 use App\Models\EventCategory;
 use App\Models\Organizer;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session as FacadesSession;
 
@@ -44,7 +45,41 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validate the incoming request
+        $data = $request->validate([
+            'title' => 'required|string|max:255',
+            'venue' => 'required|string|max:255',
+            'date' => 'required|date',
+            'start_time' => 'required',
+            'description' => 'required|string',
+            'booking_url' => 'nullable|string|max:255',
+            'tags' => 'required|json',
+            'organizer' => 'required|exists:organizers,id',
+            'event_category' => 'required|exists:event_categories,id',
+        ]);
+
+        if (!$data) {
+            FacadesSession::flash('message', 'Event gagal ditambah !');
+            FacadesSession::flash('alert-class', 'failed');
+            return redirect()->route('master.event.index');
+        }
+
+        Event::create([
+            'title' => $request->title,
+            'venue' => $request->venue,
+            'date' => $request->date,
+            'start_time' => $request->start_time,
+            'description' => $request->description,
+            'booking_url' => $request->booking_url,
+            'tags' => $request->tags, // Save tags as JSON
+            'organizer_id' => $request->organizer,
+            'event_category_id' => $request->event_category,
+        ]);
+
+        FacadesSession::flash('message', 'Event berhasil ditambah!');
+        FacadesSession::flash('alert-class', 'success');
+
+        return redirect()->route('master.event.index');
     }
 
     /**
@@ -52,7 +87,8 @@ class EventController extends Controller
      */
     public function show($id)
     {
-        
+        $event = Event::with('categoryEvent', 'organizer')->find($id);
+        return view('events.event_detail.index', compact('event'));
     }
 
     /**
@@ -62,8 +98,9 @@ class EventController extends Controller
     {
         $eventData = Event::findOrFail($id);
         $organizers = Organizer::all();
+        $categories = EventCategory::all();
 
-    return view('master/event/form/index', compact('eventData', 'organizers'));
+        return view('master/event/form/index', compact('eventData', 'organizers', 'categories'));
     }
 
     /**
@@ -71,7 +108,42 @@ class EventController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        // Validate the incoming request
+        $data = $request->validate([
+            'title' => 'required|string|max:255',
+            'venue' => 'required|string|max:255',
+            'date' => 'required|date',
+            'start_time' => 'required',
+            'description' => 'required|string',
+            'booking_url' => 'nullable|string|max:255',
+            'tags' => 'required|json',
+            'organizer' => 'required|exists:organizers,id',
+            'event_category' => 'required|exists:event_categories,id',
+        ]);
+
+        if (!$data) {
+            FacadesSession::flash('message', 'Event gagal ditambah !');
+            FacadesSession::flash('alert-class', 'failed');
+            return redirect()->route('master.event.index');
+        }
+
+        Event::query()->where('id', $id)->update([
+            'title' => $request->title,
+            'venue' => $request->venue,
+            'date' => $request->date,
+            'start_time' => $request->start_time,
+            'description' => $request->description,
+            'booking_url' => $request->booking_url,
+            'tags' => $request->tags, 
+            'organizer_id' => $request->organizer,
+            'event_category_id' => $request->event_category,
+            'updated_at' => Carbon::now(),
+        ]);
+
+        FacadesSession::flash('message', 'Event berhasil ditambah!');
+        FacadesSession::flash('alert-class', 'success');
+
+        return redirect()->route('master.event.index');
     }
 
     /**

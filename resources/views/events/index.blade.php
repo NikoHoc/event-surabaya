@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-<div class="container mx-auto px-4 mt-5">
+<div class="container mx-auto px-4 mt-20">
     <h1 class="text-2xl font-bold">Events in Surabaya</h1>
 </div>
 <div class="container mx-auto px-4 mt-4">
