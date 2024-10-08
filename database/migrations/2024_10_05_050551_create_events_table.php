@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('venue');
             $table->date('date');
             $table->time('start_time');
-            $table->string('description');
+            $table->longText('description');
             $table->string('booking_url')->nullable();
             $table->json('tags');
             $table->foreign('organizer_id')->references('id')->on('organizers')->onDelete('cascade');

@@ -44,7 +44,7 @@
                 <tr class="text-left">
                     <th>{{ $loop->iteration }}</th>
                     <td>{{ $event->title }}</td>
-                    <th>{{ \Carbon\Carbon::parse($event->date)->format('D, M d Y h:i A') }}</th>
+                    <th>{{ $event->date->format('D, M d Y') }} - {{ $event->start_time->format('h:i A') }}</th>
                     <td>{{ $event->venue }}</td>
                     <th>{{ $event->organizer->name }}</th>
                     <td>{{ $event->description }}</td>
