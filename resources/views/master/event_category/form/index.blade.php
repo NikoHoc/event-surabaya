@@ -18,7 +18,7 @@
             @method('PUT')
             <div class="mb-2">
                 <p class="mb-2">Category Name:</p>
-                <input type="text" name="name" value="{{ $categoryData->name }}" class="input input-bordered input-info w-full max-w-xs" />
+                <input required type="text" name="name" value="{{ $categoryData->name }}" class="input input-bordered input-info w-full max-w-xs" />
             </div>
             <div class="flex space-x-2 mt-4">
                 <button type="submit" class="btn btn-primary">Update</button>
@@ -30,7 +30,7 @@
         <form action="{{ route('event_category.store') }}" method="POST" class="inline">
             @csrf
             <div class="mb-2"><p class="mb-2">Category Name:</p>
-                <input type="text" name="name" value="" class="input input-bordered input-info w-full max-w-xs" />
+                <input required type="text" name="name" value="" class="input input-bordered input-info w-full max-w-xs" />
             </div>
             
             <div class="flex space-x-2 mt-4">

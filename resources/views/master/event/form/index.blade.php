@@ -19,11 +19,11 @@
             <div class="grid grid-cols-4 gap-4 mt-2">
                 <div>
                     <p>Event Name:</p>
-                    <input type="text" name="title" value="{{ $eventData->title }}" class="input input-bordered input-info w-full max-w-xs" />
+                    <input required type="text" name="title" value="{{ $eventData->title }}" class="input input-bordered input-info w-full max-w-xs" />
                 </div>
                 <div class="mb-2">
                     <p>Event Category:</p>
-                    <select name="event_category" class="select select-bordered w-full max-w-xs">
+                    <select required name="event_category" class="select select-bordered w-full max-w-xs">
                         <option value="" disabled>Select Event Category</option>
                         @foreach($categories as $category)
                             <option value="{{ $category->id }}" 
@@ -38,22 +38,22 @@
             <div class="grid grid-cols-4 gap-4 mt-2">
                 <div class="mb-2">
                     <p>Start Time:</p>
-                    <input type="time" name="start_time" value="{{ \Carbon\Carbon::parse($eventData->start_time)->format('h:i') }}" class="input input-bordered input-info w-full max-w-xs" />
+                    <input required type="time" name="start_time" value="{{ \Carbon\Carbon::parse($eventData->start_time)->format('h:i') }}" class="input input-bordered input-info w-full max-w-xs" />
                 </div>
                 <div>
                     <p>Date:</p>
-                    <input type="date" name="date" value="{{ \Carbon\Carbon::parse($eventData->date)->format('Y-m-d') }}" class="input input-bordered input-info w-full max-w-xs" />
+                    <input required type="date" name="date" value="{{ \Carbon\Carbon::parse($eventData->date)->format('Y-m-d') }}" class="input input-bordered input-info w-full max-w-xs" />
                 </div>
             </div>
         
             <div class="mb-2 mt-2">
                 <p>Location:</p>
-                <input type="text" name="venue" value="{{ $eventData->venue }}" class="input input-bordered input-info w-full max-w-xs" />
+                <input required type="text" name="venue" value="{{ $eventData->venue }}" class="input input-bordered input-info w-full max-w-xs" />
             </div>
         
             <div class="mb-2 mt-2">
                 <p>Organizer:</p>
-                <select name="organizer" class="select select-bordered w-full max-w-xs">
+                <select required name="organizer" class="select select-bordered w-full max-w-xs">
                     <option value="" disabled selected>Select Organizer</option>
                     @foreach($organizers as $organizer)
                         <option value="{{ $organizer->id }}" 
@@ -71,12 +71,12 @@
         
             <div class="mb-2 mt-2">
                 <p>Description:</p>
-                <textarea class="editor" name="description">{{ $eventData->description }}</textarea>
+                <textarea required class="editor" name="description">{{ $eventData->description }}</textarea>
             </div>
         
             <div class="mb-2 mt-2">
                 <label for="exampletags" class="inline-block mb-2">Tags</label>
-                <input type="text" name="tags" value="{{ isset($eventData) ? json_encode(json_decode($eventData->tags)) : '["Tags1", "Tags2"]' }}" class="tagify w-full leading-5 relative text-sm py-2 px-4 rounded text-gray-800 bg-white border border-gray-300 focus:outline-none focus:border-gray-400 focus:ring-0" id="tags">
+                <input required type="text" name="tags" value="{{ isset($eventData) ? json_encode(json_decode($eventData->tags)) : '["Tags1", "Tags2"]' }}" class="tagify w-full leading-5 relative text-sm py-2 px-4 rounded text-gray-800 bg-white border border-gray-300 focus:outline-none focus:border-gray-400 focus:ring-0" id="tags">
             </div>
 
             <div class="flex space-x-2 mt-4">
@@ -92,11 +92,11 @@
             <div class="grid grid-cols-4 gap-4 mt-2">
                 <div>
                     <p>Event Name:</p>
-                    <input type="text" name="title" value="" class="input input-bordered input-info w-full max-w-xs" />
+                    <input required type="text" name="title" value="" class="input input-bordered input-info w-full max-w-xs" />
                 </div>
                 <div class="mb-2">
                     <p>Event Category:</p>
-                    <select name="event_category" class="select select-bordered w-full max-w-xs">
+                    <select required name="event_category" class="select select-bordered w-full max-w-xs">
                         <option value="" disabled selected>Select Event Category</option>
                         @foreach($categories as $category)
                             <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -108,22 +108,22 @@
             <div class="grid grid-cols-4 gap-4 mt-2">
                 <div class="mb-2">
                     <p>Start Time:</p>
-                    <input type="time" name="start_time" value="" class="input input-bordered input-info w-full max-w-xs" />
+                    <input required type="time" name="start_time" value="" class="input input-bordered input-info w-full max-w-xs" />
                 </div>
                 <div>
                     <p>Date:</p>
-                    <input type="date" name="date" value="" class="input input-bordered input-info w-full max-w-xs" />
+                    <input required type="date" name="date" value="" class="input input-bordered input-info w-full max-w-xs" />
                 </div>
             </div>
 
             <div class="mb-2 mt-2">
                 <p>Location:</p>
-                <input type="text" name="venue" value="" class="input input-bordered input-info w-full max-w-xs" />
+                <input required type="text" name="venue" value="" class="input input-bordered input-info w-full max-w-xs" />
             </div>
 
             <div class="mb-2 mt-2">
                 <p>Organizer:</p>
-                <select name="organizer" class="select select-bordered w-full max-w-xs">
+                <select required name="organizer" class="select select-bordered w-full max-w-xs">
                     <option value="" disabled selected>Select Organizer</option>
                     @foreach($organizers as $organizer)
                         <option value="{{ $organizer->id }}">{{ $organizer->name }}</option>
@@ -138,12 +138,12 @@
 
             <div class="mb-2 mt-2">
                 <p>Description:</p>
-                <textarea class="editor" name="description">Add Your Description</textarea>
+                <textarea required class="editor" name="description">Add Your Description</textarea>
             </div>
 
             <div class="mb-2 mt-2">
                 <label for="exampletags" class="inline-block mb-2">Tags</label>
-                <input type="text" name="tags" placeholder="input tag" class="tagify w-full leading-5 relative text-sm py-2 px-4 rounded text-gray-800 bg-white border border-gray-300 focus:outline-none focus:border-gray-400 focus:ring-0" id="tags">
+                <input required type="text" name="tags" placeholder="input tag" class="tagify w-full leading-5 relative text-sm py-2 px-4 rounded text-gray-800 bg-white border border-gray-300 focus:outline-none focus:border-gray-400 focus:ring-0" id="tags">
             </div>
 
             <div class="flex space-x-2 mt-4">
