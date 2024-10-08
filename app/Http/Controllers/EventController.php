@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Event;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session as FacadesSession;
 
 class EventController extends Controller
 {
@@ -21,7 +22,8 @@ class EventController extends Controller
 
     public function indexMaster()
     {
-        return view('master/event/index'); 
+        $eventData = Event::query()->get();
+        return view('master/event/index', compact('eventData')); 
     }
 
     /**
@@ -29,7 +31,7 @@ class EventController extends Controller
      */
     public function create()
     {
-        //
+        return view('master/event/form/index'); 
     }
 
     /**
@@ -45,12 +47,7 @@ class EventController extends Controller
      */
     public function show($id)
     {
-        //$event = Event::findOrFail($id);
-        // $event = Event::query()->where('id', $id)->firstOrFail();
-        // return view('events/event_detail/index', compact('event'));
-
-        $event = Event::with('categoryEvent', 'organizer')->find($id);
-        return view('events/event_detail/index', compact('event'));
+        
     }
 
     /**
@@ -58,7 +55,10 @@ class EventController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $eventData = Event::findOrFail($id);
+        return view('master/organizer/form/index', 
+            compact('eventData')
+        ); 
     }
 
     /**
@@ -74,6 +74,11 @@ class EventController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Event::query()->where('id', $id)->delete();
+
+        FacadesSession::flash('message', 'Organizer berhasil dihapus !');
+        FacadesSession::flash('alert-class', 'success');
+
+        return redirect()->route('organizer.index');
     }
 }
