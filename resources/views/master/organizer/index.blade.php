@@ -49,7 +49,7 @@
                     <td class="whitespace-nowrap">
                         <a href="{{ route('organizer.show', $organizer->id) }}">{{ $organizer->name }}</a>
                     </td>
-                    <td>{{ $organizer->description }}</td>
+                    <td>{!! $organizer->description !!}</td>
                     <td>
                         <div class="inline-flex gap-2">
                             <a href="{{ route('organizer.edit', $organizer->id) }}" class="btn btn-warning">

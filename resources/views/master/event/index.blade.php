@@ -47,7 +47,7 @@
                     <th>{{ $event->date->format('D, M d Y') }} - {{ $event->start_time->format('h:i A') }}</th>
                     <td>{{ $event->venue }}</td>
                     <th>{{ $event->organizer->name }}</th>
-                    <td>{{ $event->description }}</td>
+                    <td>{!! $event->description !!}</td>
                     <th class="flex-col">
                         {{-- @foreach (json_decode($event->tags) as $tag)
                             <div class="badge badge-primary whitespace-nowrap">{{ $tag->value }}</div>
@@ -81,7 +81,6 @@
     </div>
 </div>
 @endsection
-
 
 
 

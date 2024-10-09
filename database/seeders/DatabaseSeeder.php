@@ -23,8 +23,12 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        EventCategory::factory(3)->create();
-        Organizer::factory(5)->create();
-        Event::factory(6)->create();
+        // EventCategory::factory(3)->create();
+        // Organizer::factory(5)->create();
+        // Event::factory(6)->create();
+
+        $this->call(EventCategorySeeder::class);
+        $this->call(OrganizerSeeder::class);
+        $this->call(EventSeeder::class);
     } 
 }

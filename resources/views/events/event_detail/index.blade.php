@@ -39,7 +39,7 @@
     <div class="grid grid-rows-2 grid-flow-col gap-4 mt-5">
         <div>
             <h1 class="font-bold">About This Event</h1>
-            <p>{{ $event->description }}</p>
+            <p>{!! $event->description !!}</p>
         </div>
         <div>
             <h1 class="font-bold">Tags</h1>

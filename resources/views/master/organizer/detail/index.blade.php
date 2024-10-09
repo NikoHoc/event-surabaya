@@ -62,7 +62,7 @@
 
         <div class="">
             <div class="text-xl font-bold w-32">Description</div>
-            <div class="text-md mt-1">{{ $organizerData->description }}</div>
+            <div class="text-md mt-1">{!! $organizerData->description !!}</div>
         </div>
     </div>
 </div>
