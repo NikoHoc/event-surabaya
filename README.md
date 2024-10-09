@@ -8,29 +8,43 @@
 </p>
 
 ## Tools
-### Tailwind CSS & DaisyUI
-DaisyUI install: npm i -D daisyui@latest
+- Tailwind CSS & DaisyUI
+DaisyUI install:
+```bash
+  npm i -D daisyui@latest
+```
 
-Add daisyUI to tailwind.config.js:\n
+Add daisyUI to tailwind.config.js:
+```javascript
 module.exports = {
   //...
   plugins: [
     require('daisyui'),
   ],
 }
+```
 
 run project:
-- npm run dev
-- php artisan serve
+```bash
+  npm run dev
+  php artisan serve
+```
 
-### jQuery
-include this -> <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+- jQuery
+include this ->
+```javascript
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+```
+
 ### DataTables (for table)
 include this ->
+```javascript
 <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.css" />
 <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
+```
 
 usage->
+```javascript
 <script>
 $(document).ready(function () {
     $('#table').DataTable({
@@ -40,32 +54,49 @@ $(document).ready(function () {
     });
 });
 </script>
+```
 
-### TinyMCE (text editor)
-install: npm install tinymce\t
-add new files in resources/js/tinymce.js\t
-add this in tinymce.js -> [About Page](https://docs.google.com/document/d/11Pzk1jCyRna7vW9tckGC8AcKR-VKkCtrJdYQ4-pPoss/edit?usp=sharing)\t
-include -> @vite('resources/js/tinymce.js')\t
-usage-> add class="editor" in textarea\t
+- TinyMCE - text editor
+install: 
+```bash
+  npm install tinymce
+```
+add new files in resources/js/tinymce.js
 
-tagify(for tags input)
+add this in tinymce.js -> [About Page](https://docs.google.com/document/d/11Pzk1jCyRna7vW9tckGC8AcKR-VKkCtrJdYQ4-pPoss/edit?usp=sharing)
+
+include -> 
+```javascript
+@vite('resources/js/tinymce.js')
+```
+usage-> add class="editor" in textarea
+
+- Tagify - tags input
 include this ->
+```javascript
 <link href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" />
 <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
 <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.polyfills.min.js"></script>
+```
 
 usage->
+```javascript
 <script>
 $(document).ready(function () {
     var input = $('#tags')[0];
     var tagify = new Tagify(input);
 });
 </script>
+```
 
-### Sweet Alert (for delete confirmation)
+- Sweet Alert - confirmation
 include this ->
+```javascript
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+```
+
 usage ->
+```javascript
 <script>
 $(document).ready(function () {
     $('.delete-form').on('submit', function(event) {
@@ -87,6 +118,7 @@ $(document).ready(function () {
     });
 });
 </script>
+```
 
 ## Home Pages
 
