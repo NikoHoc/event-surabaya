@@ -160,7 +160,7 @@
 @section('library-js')
 <script>
     $(document).ready(function () {
-        var input = $('#tags')[0]; // Get the input element
+        var input = $('#tags')[0]; 
         var tagify = new Tagify(input);
     });
 </script>

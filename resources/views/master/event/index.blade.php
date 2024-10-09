@@ -49,17 +49,9 @@
                     <th>{{ $event->organizer->name }}</th>
                     <td>{!! $event->description !!}</td>
                     <th class="flex-col">
-                        {{-- @foreach (json_decode($event->tags) as $tag)
+                        @foreach(json_decode($event->tags) as $tag)
                             <div class="badge badge-primary whitespace-nowrap">{{ $tag->value }}</div>
-                        @endforeach --}}
-                        @php
-                            $tags = json_decode($event->tags, true); // Decode the JSON
-                        @endphp
-                    
-                        @foreach($tags as $tag)
-                            <div class="badge badge-primary whitespace-nowrap">{{ $tag['value'] }}</div>
                         @endforeach
-                       
                     <td class="whitespace-nowrap">
                         
                         <a href="{{ route('events.edit', $event->id) }}" class="btn btn-warning">
@@ -95,7 +87,7 @@
 
         // SweetAlert for Delete Confirmation
         $('.delete-form').on('submit', function(event) {
-            event.preventDefault(); // Prevent the form from submitting immediately
+            event.preventDefault();
             let form = $(this);
 
             Swal.fire({
@@ -108,13 +100,11 @@
                 confirmButtonText: 'Yes, delete it!'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    form.off('submit').submit(); // Allow form submission
+                    form.off('submit').submit();
                 }
             });
         });
     });
-
-    
 </script>
 
 @endsection

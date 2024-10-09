@@ -43,12 +43,8 @@
         </div>
         <div>
             <h1 class="font-bold">Tags</h1>
-            @php
-                $tags = json_decode($event->tags, true); // Decode the JSON
-            @endphp
-                    
-            @foreach($tags as $tag)
-                <div class="badge badge-primary whitespace-nowrap">{{ $tag['value'] }}</div>
+            @foreach(json_decode($event->tags) as $tag)
+                <div class="badge badge-primary whitespace-nowrap">{{ $tag->value }}</div>
             @endforeach
         </div>
     </div>

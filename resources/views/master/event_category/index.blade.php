@@ -11,13 +11,6 @@
         <h1 class="text-2xl font-bold">Event Category</h1>
         <a href="{{ route('event_category.create') }}" class="btn btn-primary ml-4">+ Create</a>
     </div>
-
-    {{-- <!-- Success Message -->
-    @if(session('success'))
-        <div class="alert alert-success mt-4">
-            {{ session('success') }}
-        </div>
-    @endif --}}
     @if (Session::has('message') && Session::get('alert-class') == 'success')
         <div class="alert alert-success mt-4"
             role="alert">
@@ -80,7 +73,7 @@
 
         // SweetAlert for Delete Confirmation
         $('.delete-form').on('submit', function(event) {
-            event.preventDefault(); // Prevent the form from submitting immediately
+            event.preventDefault(); 
             let form = $(this);
 
             Swal.fire({
@@ -93,7 +86,7 @@
                 confirmButtonText: 'Yes, delete it!'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    form.off('submit').submit(); // Allow form submission
+                    form.off('submit').submit(); 
                 }
             });
         });
