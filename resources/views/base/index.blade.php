@@ -12,7 +12,7 @@
     <link href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" />
     @yield('library-css')
 
-    <title>Document</title>
+    <title>Surabaya Event</title>
 </head>
 <body>
     <!-- Navbar -->
@@ -47,7 +47,7 @@
             <li><a href="/events">Events</a></li>
           </ul>
         </div>
-        <a class="btn btn-ghost text-xl">Surabaya Events</a>
+        <a  href="/" class="btn btn-ghost text-xl">Surabaya Events</a>
       </div>
 
       <div class="navbar-center hidden lg:flex">
@@ -66,7 +66,7 @@
         </ul>
       </div>
       <div class="navbar-end">
-        <a class="btn">Home</a>
+        <a href="/" class="btn">Home</a>
       </div>
     </div>
     <div class="container mx-auto px-4">

@@ -18,9 +18,9 @@ class EventCategoryFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->title(),
-            'created_at' => Carbon::createFromFormat('Y-m-d H', '1975-05-21 22'),
-            'updated_at' => Carbon::createFromFormat('Y-m-d H', '1975-05-21 22'),
+            // 'name' => fake()->title(),
+            // 'created_at' => Carbon::createFromFormat('Y-m-d H', '1975-05-21 22'),
+            // 'updated_at' => Carbon::createFromFormat('Y-m-d H', '1975-05-21 22'),
         ];
     }
 }
