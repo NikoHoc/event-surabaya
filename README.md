@@ -17,13 +17,13 @@
 
 ## Master Data Pages
 
-#### Master Event Category
+### Master Event Category
 Event category data page
 ![master event category page](https://github.com/user-attachments/assets/9933088f-b73b-47de-b089-e64b7977f5aa)
 Evnt category Form page
 ![master event category form](https://github.com/user-attachments/assets/8d47a4dd-9b86-484c-8f4e-b1753a1e1663)
 
-#### Master Organizer
+### Master Organizer
 Organizer data page
 ![master organizer page](https://github.com/user-attachments/assets/50edaa85-b6fd-48ec-8898-b8490a50784e)
 Organizer form page
@@ -32,7 +32,7 @@ Detail organizer page
 ![master organizer detail page](https://github.com/user-attachments/assets/0ca1ff75-e400-4439-b4fd-af4cba92c3a1)
 
 
-#### Master Event
+### Master Event
 Event data page
 ![master event page](https://github.com/user-attachments/assets/5cc118ec-0224-42be-b47d-dfbaa6dfd9b0)
 Event form page 1/2
