@@ -52,6 +52,7 @@
                         @foreach(json_decode($event->tags) as $tag)
                             <div class="badge badge-primary whitespace-nowrap">{{ $tag->value }}</div>
                         @endforeach
+                        
                     <td class="whitespace-nowrap">
                         
                         <a href="{{ route('events.edit', $event->id) }}" class="btn btn-warning">
