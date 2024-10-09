@@ -8,7 +8,7 @@
 </p>
 
 ## Tools
-- Tailwind CSS & DaisyUI
+### Tailwind CSS & DaisyUI
 DaisyUI install:
 ```bash
   npm i -D daisyui@latest
@@ -30,7 +30,7 @@ run project:
   php artisan serve
 ```
 
-- jQuery
+### jQuery
 include this ->
 ```javascript
 <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
@@ -56,7 +56,7 @@ $(document).ready(function () {
 </script>
 ```
 
-- TinyMCE - text editor
+### TinyMCE - text editor
 install: 
 ```bash
   npm install tinymce
@@ -71,7 +71,7 @@ include ->
 ```
 usage-> add class="editor" in textarea
 
-- Tagify - tags input
+### Tagify - tags input
 include this ->
 ```javascript
 <link href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" />
@@ -89,7 +89,7 @@ $(document).ready(function () {
 </script>
 ```
 
-- Sweet Alert - confirmation
+### Sweet Alert - confirmation
 include this ->
 ```javascript
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
