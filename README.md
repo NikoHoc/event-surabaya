@@ -11,7 +11,7 @@
 ### Tailwind CSS & DaisyUI
 DaisyUI install: npm i -D daisyui@latest
 
-Add daisyUI to tailwind.config.js:
+Add daisyUI to tailwind.config.js:\n
 module.exports = {
   //...
   plugins: [
@@ -19,7 +19,7 @@ module.exports = {
   ],
 }
 
-run project: 
+run project:
 - npm run dev
 - php artisan serve
 
@@ -42,11 +42,11 @@ $(document).ready(function () {
 </script>
 
 ### TinyMCE (text editor)
-install: npm install tinymce 
-add new files in resources/js/tinymce.js
-add this in tinymce.js -> [About Page](https://docs.google.com/document/d/11Pzk1jCyRna7vW9tckGC8AcKR-VKkCtrJdYQ4-pPoss/edit?usp=sharing)
-include -> @vite('resources/js/tinymce.js')
-usage-> add class="editor" in textarea
+install: npm install tinymce\t
+add new files in resources/js/tinymce.js\t
+add this in tinymce.js -> [About Page](https://docs.google.com/document/d/11Pzk1jCyRna7vW9tckGC8AcKR-VKkCtrJdYQ4-pPoss/edit?usp=sharing)\t
+include -> @vite('resources/js/tinymce.js')\t
+usage-> add class="editor" in textarea\t
 
 tagify(for tags input)
 include this ->
